@@ -6,13 +6,6 @@ import numpy as np
 
 pygame.init()
 font = pygame.font.Font('arial.ttf', 25)
-#font = pygame.font.SysFont('arial', 25)
-
-# reset
-# reward
-# play(action) -> direction
-# game_interation
-# is_collision
 
 class Direction(Enum):
     RIGHT = 1
@@ -30,7 +23,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 20
+SPEED = 40
 
 class SnakeGameAI:
     
@@ -105,7 +98,7 @@ class SnakeGameAI:
         if pt.x > self.w - BLOCK_SIZE or pt.x < 0 or pt.y > self.h - BLOCK_SIZE or pt.y < 0:
             return True
         # hits itself
-        if self.head in self.snake[1:]:
+        if pt in self.snake[1:]:
             return True
         
         return False
